@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+{% csrf_token %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'css/moon.css' %}" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<div class="container">
+  <div class="box">
+    <button class="btn"> Notez nous</button>
+
+  </div>
+  <div class="rate-section">
+  <h2> Review Your opinion</h2>
+  <form method="post">
+    {% csrf_token %}
+  <ul class="emojis">
+    <li class="item angry"> 
+      <input type="radio" id="very_bad_1" name="emoji" class="required" value="very bad" onchange="getVals(this, 'emoji');">
+      <label for="very_bad_1"><i class='bx bx-angry'></i></label>
+  </li>
+  <li class="item sad"> 
+      <input type="radio" id="bad_1" name="emoji" class="required" value="bad" onchange="getVals(this, 'emoji');">
+      <label for="bad_1"><i class='bx bx-sad'></i></label>
+  </li>
+  <li class="item happy"> 
+      <input type="radio" id="good_1" name="emoji" class="required" value="happy" onchange="getVals(this, 'emoji');">
+      <label for="good_1"><i class='bx bx-smile'></i></label>
+  </li>
+  <li class="item laugh"> 
+      <input type="radio" id="very_good_1" name="emoji" class="required" value="very happy" onchange="getVals(this, 'emoji');">
+      <label for="very_good_1"><i class='bx bx-laugh'></i></label>
+  </li>
+  </ul>
+  <button class="submit" type="submit" name="submit">SUBMIT</button>
+  </form>
+</div>
+
+<div class="success-popup">
+  <div class="check-icon"><i class='bx bxs-check-circle'></i></div>
+  <h3>Thanks You!</h3>
+  <p>Your Response has been successfully sent Thanks!</p>
+</div>
+</div>
+<script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>
+

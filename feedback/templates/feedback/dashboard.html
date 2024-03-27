@@ -1,0 +1,38 @@
+{% extends 'feedback/base.html' %}
+
+{% block content %}
+<form method="GET" >
+    <select name="period" id="period-select">
+        <option value="aujourd_hui">Aujourd'hui</option>
+        <option value="hier">Hier</option>
+        <option value="7_derniers_jours">Les 7 derniers jours</option>
+        <option value="30_derniers_jours">Les 30 derniers jours</option>
+        <option value="365_derniers_jours">Les 365 derniers jours</option>
+        <option value="personnalisé">Personnalisé</option>
+    </select>
+    <input type="date" name="start_date" id="start-date" style="display: none;">
+    <input type="date" name="end_date" id="end-date" style="display: none;">
+    <input type="submit" value="Afficher">
+</form>
+
+<script>
+    document.getElementById('period-select').addEventListener('change', function() {
+        var customFields = document.querySelectorAll('#start-date, #end-date');
+        if (this.value === 'personnalisé') {
+            customFields.forEach(function(field) {
+                field.style.display = 'inline-block';
+            });
+        } else {
+            customFields.forEach(function(field) {
+                field.style.display = 'none';
+            });
+        }
+    });
+</script>
+<h2>Statistiques des emojis</h2>
+<ul>
+    {% for stat in emoji_stats %}
+        <li>{{ stat.emoji }}: {{ stat.count }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
