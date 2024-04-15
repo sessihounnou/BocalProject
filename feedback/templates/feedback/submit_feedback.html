@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <style>
+      body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4; /* Couleur de fond de la page */
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff; /* Couleur de fond de la boîte */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            text-align: center;
+        }
+
+        .emoji-label:hover {
+            opacity: 0.8;
+        }
+        .navbar {
+            background-color: gray; /* Couleur de fond de la navbar */
+            color: white; /* Couleur du texte */
+            padding: 10px; /* Espacement interne */
+            position: fixed; /* Position fixe pour rester au sommet */
+            top: 0; /* Collé en haut */
+            right: 0; /* Collé à droite */
+            border-bottom-left-radius: 10px; /* Arrondi du coin inférieur gauche */
+            text-decoration: none;
+        }
+
+        /* Style pour l'enseigne */
+        .brand {
+            font-size: 1.5rem; /* Taille de police plus grande */
+            font-weight: bold; /* Texte en gras */
+            margin-right: auto; /* Pousser vers la droite autant que possible */
+        }
+    </style>
+</head>
+<a href="/dashboard" class="navbar">
+  <!-- Barre de navigation -->
+  <nav>
+      <span class="brand">Tableau de bord</span> <!-- Enseigne -->
+      <!-- Liens de navigation (vous pouvez ajouter des liens ici si nécessaire) -->
+  </nav>
+</a>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+<body>
+  <div class="container">
+<form id="emojiForm" method="post"> 
+  {% csrf_token %}
+  <section class="form-section bg-white p-5 rounded">
+      <h4 class="text-xl">Quelle impression avez-vous de notre établissement ?</h4>
+      <div class="flex flex-col lg:flex-row items-center gap-5 mt-5">
+          
+          <!-- Smiley 1 -->
+          <div class="flex justify-evenly items-center w-96 lg:w-1/3 p-3 m-3 border border-gray-300 rounded" >
+              <input type="radio" id="smiley1" name="emoji" class="required" value="very bad" style="display: none;">
+              <label for="smiley1" class="flex justify-between mx-[5%]  rounded" style="cursor: pointer;">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff000b" class="text-red-300 w-20 h-20">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 16.318A4.486 4.486 0 0012.016 15a4.486 4.486 0 00-3.198 1.318M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                  </svg>
+              </label>
+              <div class="text-center">
+                <h4 class="inline text-gray-500 text-md">Très mauvais</h4>
+            </div>
+          </div>
+          
+          <!-- Smiley 2 -->
+          <div class="flex justify-evenly items-center w-96 lg:w-1/3 p-3 m-3 border border-gray-300 rounded">
+              <input type="radio" id="smiley2" name="emoji" class="required" value="bad" style="display: none;">
+              <label for="smiley2" class="flex justify-between mx-[5%]  rounded" style="cursor: pointer;">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff8300" class="text-gray-400 w-20 h-20">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a25.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                  </svg>
+              </label>
+              <div class="text-center">
+                <h4 class="inline text-gray-500 text-md">Mauvais</h4>
+            </div>
+          </div>
+          
+          <!-- Smiley 3 -->
+          <div class="flex justify-evenly items-center w-96 lg:w-1/3 p-3 m-3 border border-gray-300 rounded">
+              <input type="radio" id="smiley3" name="emoji" class="required" value="happy" style="display: none;">
+              <label for="smiley3" class="flex justify-between mx-[5%]  rounded" style="cursor: pointer;">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#65d830" class="text-gray-400 w-20 h-20">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a25.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                  </svg>
+              </label>
+              <div class="text-center">
+                <h4 class="inline text-gray-500 text-md">Satisfaisant</h4>
+            </div>
+          </div>
+
+          <!-- Smiley 4 -->
+          <div class="flex justify-evenly items-center w-96 lg:w-1/3 p-3 m-3 border border-gray-300 rounded">
+              <input type="radio" id="smiley4" name="emoji" class="required" value="very happy" style="display: none;">
+              <label for="smiley4" class="flex justify-between mx-[5%]  rounded" style="cursor: pointer;">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00bb47" class="text-green-400 w-20 h-20">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                  </svg>
+              </label>
+              <div class="text-center">
+                <h4 class="inline text-gray-500 text-md">Très satisfaisant</h4>
+            </div>
+          </div>
+      
+      </div>
+  </section>
+</form>
+</div>
+</body>
+<script>
+  // Ajouter un écouteur d'événements à tous les éléments de type radio avec la classe "required"
+  document.querySelectorAll('.required').forEach(function(radio) {
+    // Ajouter un écouteur d'événements pour l'événement "click"
+    radio.addEventListener('click', function() {
+      // Soumettre le formulaire associé lorsque l'un des boutons radio est cliqué
+      document.getElementById('emojiForm').submit();
+    });
+  });
+</script>

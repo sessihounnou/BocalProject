@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% csrf_token %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheel'>
+    <title>Boîte centrée</title>
+    <style>
+        
+        .navbar {
+            background-color: gray; /* Couleur de fond de la navbar */
+            color: white; /* Couleur du texte */
+            padding: 10px; /* Espacement interne */
+            position: fixed; /* Position fixe pour rester au sommet */
+            top: 0; /* Collé en haut */
+            right: 0; /* Collé à droite */
+            border-bottom-left-radius: 10px; /* Arrondi du coin inférieur gauche */
+            text-decoration: none;
+        }
+
+        /* Style pour l'enseigne */
+        .brand {
+            font-size: 1.5rem; /* Taille de police plus grande */
+            font-weight: bold; /* Texte en gras */
+            margin-right: auto; /* Pousser vers la droite autant que possible */
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box {
+            width: 300px;
+            height: 200px;
+            background-color: rgba(144, 155, 158, 0.185);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/submit_feedback" class="navbar">
+        <!-- Barre de navigation -->
+        <nav>
+            <span class="brand">Accueil</span> <!-- Enseigne -->
+            <!-- Liens de navigation (vous pouvez ajouter des liens ici si nécessaire) -->
+        </nav>
+    </a>
+    <div class="box">
+      <div class="check-icon"><i class='bx bxs-check-circle'></i></div>
+    <h3> Merci !</h3>
+    <p>Votre réponse a été envoyée avec succès.</p>
+    </div>
+</body>
+</html>
